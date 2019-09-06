@@ -6,7 +6,7 @@ var lettersGuessed = [];
 var compChoice;
 var compIndex;
 // Available letters and letter choice
-var alphabet = ["a","b","c","d","e","f","g", "h"];
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 // HTML BRIDGES
 var $winsText = document.getElementById('wins-text');
