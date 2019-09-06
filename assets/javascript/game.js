@@ -6,7 +6,7 @@ var lettersGuessed = [];
 var compChoice;
 var compIndex;
 // Available letters and letter choice
-var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // HTML BRIDGES
 var $winsText = document.getElementById('wins-text');
@@ -14,32 +14,38 @@ var $lossText = document.getElementById('loss-text');
 var $remaining = document.getElementById('remaining');
 var $lettersGuessed = document.getElementById('letters-guessed')
 
-document.onkeyup = function(event){
+document.onkeyup = function (event) {
     var letter = event.key.toLowerCase();
     console.log(letter);
-//****TO DO ******* Need to check if we have already guessed the letter */
-// *******TO DO********* Make sure I pressed a letter key
-    // we have guesses remaining
-    if (guessesLeft > 0) {
-        //correct guess-win
-        if(letter === compChoice){
-            alert("You WIN");
-            wins++;
-            newGame();
-        // incorrect guess
-        } else {
-            alert("Incorrect!");
-            lettersGuessed.push(letter);
-            guessesLeft--
-            renderDisplay();
-            // lost
-            if (guessesLeft === 0) {
-                alert('You lose');
-                losses++;
-                newGame()
+    //****TO DO ******* Need to check if we have already guessed the letter */
+    // *******TO DO********* Make sure I pressed a letter key
+
+    if (letter === /^[a - zA - Z]+$/) {
+        // we have guesses remaining
+        if (guessesLeft > 0) {
+            //correct guess-win
+            if (letter === compChoice) {
+                alert("You WIN");
+                wins++;
+                newGame();
+                // incorrect guess
+            } else {
+                alert("Incorrect!");
+                lettersGuessed.push(letter);
+                guessesLeft--
+                renderDisplay();
+                // lost
+                if (guessesLeft === 0) {
+                    alert('You lose');
+                    losses++;
+                    newGame()
+                    renderDisplay()
+                }
             }
         }
-    }
+    }else[
+        alert("Not a letter")
+    ]
 };
 
 // We want functions that handle the display
@@ -57,12 +63,12 @@ function renderDisplay() {
 }
 
 function newGame() {
-   compIndex=Math.floor(Math.random() * alphabet.length);
-   compChoice= alphabet[compIndex];
-    console.log("Secret Answer:" +compChoice);
-   guessesLeft = 7;
-   lettersGuessed = [];
-   renderDisplay();
+    compIndex = Math.floor(Math.random() * alphabet.length);
+    compChoice = alphabet[compIndex];
+    console.log("Secret Answer:" + compChoice);
+    guessesLeft = 7;
+    lettersGuessed = [];
+    renderDisplay();
 }
 
 newGame();
